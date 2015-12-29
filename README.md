@@ -4,3 +4,9 @@
 想要获取更多功能、更多体验请到官网注册：dev.ichano.com(注册就送100个CID)。
 
 “众云监控”github下载地址：https://github.com/OpenIchano/Viewer
+
+本工程需要使用Android6.0 SDK来编译，并依赖
+https://github.com/OpenIchano/android-support-v7-appcompat
+https://github.com/OpenIchano/QRScanner
+https://github.com/OpenIchano/RoundImageView
+三个工程
