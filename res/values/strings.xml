@@ -23,5 +23,5 @@
     <string name="invalid_pwd">Password must contain numbers and letters.</string>
     <string name="invalid_device_name">device name is alphanumeric.</string>
     <string name="exit_str">Are you sure to exit?</string>
-	<string name="about_str"> %1$s \nVersion：%2$s \niChano incorporation (C)2011-2015 \ndev.ichano.cn \nLicensed under the Apache License, Version 2.0 \nQQ群：490534393</string>
+	<string name="about_str"> %1$s \nVersion：%2$s \niChano incorporation (C)2011-2015 \ndev.ichano.cn \nLicensed under the Apache License, Version 2.0 \nQQ用户群：151981896</string>
 </resources>

@@ -23,5 +23,5 @@
     <string name="invalid_pwd">密码必须包含字母和数字！</string>
     <string name="invalid_device_name">设备名只能为数字、字母和中文字符！</string>
     <string name="exit_str">确定要退出吗？</string>
-	<string name="about_str"> %1$s \n版本：%2$s \n南京云恩通讯科技有限公司(C)2011-2015 \ndev.ichano.cn \n开源协议：Apache License 2.0 \nQQ群：490534393</string>
+	<string name="about_str"> %1$s \n版本：%2$s \n南京云恩通讯科技有限公司(C)2011-2015 \ndev.ichano.cn \n开源协议：Apache License 2.0 \nQQ用户群：151981896</string>
 </resources>
