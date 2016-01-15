@@ -130,7 +130,7 @@ public class MyAvsHelper extends AvsInitHelper{
 			haveLogin = false;
 		}else if(LoginState.DISCONNECT == loginState){
 			mLogStateView.setText(context.getString(R.string.disconnected));
-			//Èç¹ûÏë×ö³É²úÆ·£¬ĞèÒªµ½ÎÒÃÇµÄ¹ÙÍø×¢²á²¢µÃµ½ÊÚÈ¨£¬·ñÔòÖ»ÄÜ×öÑİÊ¾Ê¹ÓÃ¡£
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É²ï¿½Æ·ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ÇµÄ¹ï¿½ï¿½ï¿½×¢ï¿½á²¢ï¿½Ãµï¿½ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ê¹ï¿½Ã¡ï¿½
 			if(errorCode == LoginError.ERR_WRONG_PACKAGE){
 				Toast.makeText(context, R.string.wrong_package_name, Toast.LENGTH_LONG).show();
 			}
@@ -163,8 +163,23 @@ public class MyAvsHelper extends AvsInitHelper{
 		return true;
 	}
 
+	//æœ‰äº›æœºå™¨å±…ç„¶æŠ¥æ‰¾ä¸åˆ°TextUtils.isEmpty()æ–¹æ³•ã€‚
+	private boolean stringIsEmpty(String str){
+		if(null == str){
+			return true;
+		}else if("".equals(str)){
+			return true;
+		}
+		return false;
+	}
+	
 	private Bitmap getBarCode(String cid, String userName, String userPwd){
-		if (TextUtils.isEmpty(cid)){
+		try{
+			Long.parseLong(cid);
+		}catch(NumberFormatException e){
+			return null;
+		}
+		if (stringIsEmpty(userName) || stringIsEmpty(userPwd)){
 			return null;
 		}
 		int size = (int) context.getResources().getDimension(R.dimen.qr_size);
