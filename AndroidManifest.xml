@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zhongyun.avs"
-    android:versionCode="100001"
-    android:versionName="1.00.001" >
+    android:versionCode="101001"
+    android:versionName="1.01.001" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -62,8 +62,8 @@
         </activity>
         
         <!-- umeng -->
-        <meta-data android:value="567ccd47e0f55a4130001397" android:name="UMENG_APPKEY"></meta-data>
-		<meta-data android:value="wandoujia" android:name="UMENG_CHANNEL"/>
+        <meta-data android:value="56aeb742e0f55abadf002418" android:name="UMENG_APPKEY"></meta-data>
+		<meta-data android:value="qq" android:name="UMENG_CHANNEL"/>
 		<activity android:name="com.umeng.fb.ConversationActivity"
             android:screenOrientation="landscape"/>
 		<service
