@@ -1,41 +1,42 @@
-众云监控采集端
+ 
+
+iChano Video Streamer App
 ===
+  
+####This project is the open source for video surveillance app "iChano Streamer”,####
+####"iChano Video Streamer" is a lite version of popular app "AtHome Video Streamer".####
+####We release the SDK, which we used to develop the app of "AtHome Video Streamer",####
+####This app is to demostrate how to use the SDK API. You need register on dev.ichano.com to obtain licenses.####
 
-####本开源代码原型是市场上的公开应用“众云监控采集端”，####
-####这是"掌上看家采集端"同公司人马倾情打造的，代码开源。####
-####开发者们可以免费获取源代码，根据自己的需求，DIY自己想要的监控APP，####
-####想要获取更多功能、更多体验请到官网注册：dev.ichano.com(注册就送100个CID)。####
-
-
-开发者
+Developer
 ------------
-* 南京云恩通讯科技有限公司 - <developer@ichano.com>
+* iChano Corp. - <developer@ichano.com>
 
 
-需要配合使用的项目
+You need another app, iChano Camera Viewer, to watch the video 
 -----
-* [Viewer] [3] 此项目为众云监控采集端
+* [Viewer] [3] iChano Camera Viewer
 
 
-本项目使用的库
+This project need following libs
 ------------------------------
 * [zxing] [1]
 * [android-support-v7-appcompat] [2]
 
-编译需求
+Compiler Requirement
 ------------------------------
 * Android 6.0
 
-运行需求
+Running Android version
 ------------------------------
 * Android 2.3
 
 
-应用截图
+App SnapShot
 -----------
 ![Image](screenshot1.png)![Image](screenshot2.png)
 
-开源协议
+Open Source 
 -------
 
   Copyright (C) 2015 iChano incorporation's Open Source Project
