@@ -162,8 +162,8 @@ public class MyAvsHelper extends AvsInitHelper{
 	public boolean enableDebug() {
 		return true;
 	}
-
-	//有些机器居然报找不到TextUtils.isEmpty()方法。
+ 
+	// Just in case TextUtils.isEmpty() not found on certain system
 	private boolean stringIsEmpty(String str){
 		if(null == str){
 			return true;
