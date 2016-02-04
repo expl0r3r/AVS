@@ -34,7 +34,7 @@ Running Android version
 
 App SnapShot
 -----------
-![Image](screenshot1.png)![Image](screenshot2.png)
+![Image](screenshot1_en.png)![Image](screenshot2_en.png)
 
 Open Source 
 -------
