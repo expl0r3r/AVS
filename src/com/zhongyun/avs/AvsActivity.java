@@ -17,11 +17,6 @@ package com.zhongyun.avs;
 
 import java.util.Locale;
 
-import com.google.ads.Ad;
-import com.google.ads.AdListener;
-import com.google.ads.AdRequest;
-import com.google.ads.AdRequest.ErrorCode;
-import com.google.ads.InterstitialAd;
 import com.ichano.rvs.streamer.Streamer;
 import com.ichano.rvs.streamer.ui.MediaSurfaceView;
 import com.umeng.analytics.MobclickAgent;
@@ -57,12 +52,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class AvsActivity extends Activity 
-	implements View.OnClickListener, PopupMenu.OnMenuItemClickListener,
-	AdListener{
+	implements View.OnClickListener, PopupMenu.OnMenuItemClickListener{
 
 	private static final String DISCLAIMER_URL_CN = "file:///android_asset/iChanoPrivacyPolicyCN.html";
 	private static final String DISCLAIMER_URL_EN = "file:///android_asset/iChanoPrivacyPolicyEN.html";
-	private static final String AD_UNIT_ID = "ca-app-pub-4895175297664182/5838968557";
 	private boolean mShowChinese;
 	private MyAvsHelper mMyAvsHelper;
 	private MediaSurfaceView mMediaSurfaceView;
@@ -73,7 +66,6 @@ public class AvsActivity extends Activity
 	private Dialog mDisclaimerDialog;
 	private Dialog mExitDialog;
 	private PopupMenu mMenu;
-	private InterstitialAd interstitialAd;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -133,11 +125,6 @@ public class AvsActivity extends Activity
 		UmengUpdateAgent.setUpdateOnlyWifi(false);
 		UmengUpdateAgent.update(this);
 		
-		//admob ad
-		interstitialAd = new InterstitialAd(this, AD_UNIT_ID);
-		interstitialAd.setAdListener(this);
-		//.addTestDevice("703C305FC29B7ED91BD7625874CFDEBC")
-		interstitialAd.loadAd(new AdRequest());
 	}
 	
 	public void onResume() {
@@ -343,33 +330,6 @@ public class AvsActivity extends Activity
 	public void onBackPressed() {
 		//super.onBackPressed();
 		showExitDlg();
-	}
-
-	@Override
-	public void onDismissScreen(Ad ad) {
-		
-	}
-
-	@Override
-	public void onFailedToReceiveAd(Ad ad, ErrorCode error) {
-		interstitialAd.loadAd(new AdRequest());
-	}
-
-	@Override
-	public void onLeaveApplication(Ad ad) {
-		
-	}
-
-	@Override
-	public void onPresentScreen(Ad ad) {
-		
-	}
-
-	@Override
-	public void onReceiveAd(Ad ad) {
-		if (interstitialAd.isReady()) {
-			interstitialAd.show();
-		}
 	}
 
 }
