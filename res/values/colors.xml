@@ -4,4 +4,5 @@
     <color name="info_bg">#2f3d4c</color>
     <color name="white">#ffffff</color>
     <color name="gray">#aea79f</color>
+    <color name="black">#000000</color>
 </resources>

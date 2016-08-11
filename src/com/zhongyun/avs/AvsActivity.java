@@ -16,13 +16,12 @@
 package com.zhongyun.avs;
 
 import java.util.Locale;
-
 import com.ichano.rvs.streamer.Streamer;
 import com.ichano.rvs.streamer.ui.MediaSurfaceView;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
 import com.umeng.update.UmengUpdateAgent;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -34,7 +33,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.widget.PopupMenu;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -47,12 +45,14 @@ import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+@SuppressLint("NewApi")
 public class AvsActivity extends Activity 
-	implements View.OnClickListener, PopupMenu.OnMenuItemClickListener{
+	implements View.OnClickListener{
 
 	private static final String DISCLAIMER_URL_CN = "file:///android_asset/iChanoPrivacyPolicyCN.html";
 	private static final String DISCLAIMER_URL_EN = "file:///android_asset/iChanoPrivacyPolicyEN.html";
@@ -65,8 +65,7 @@ public class AvsActivity extends Activity
 	private Dialog mAboutDialog;
 	private Dialog mDisclaimerDialog;
 	private Dialog mExitDialog;
-	private PopupMenu mMenu;
-	
+	private LinearLayout menu_layout;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -86,11 +85,14 @@ public class AvsActivity extends Activity
 		ImageView barCodeView = (ImageView) findViewById(R.id.barcode);
 		ImageView menuView = (ImageView) findViewById(R.id.menu);
 		menuView.setOnClickListener(this);
-		mMenu = new PopupMenu(this, menuView);
-		MenuInflater inflater = mMenu.getMenuInflater();
-	    inflater.inflate(R.menu.popup_menu, mMenu.getMenu());
-	    mMenu.setOnMenuItemClickListener(this);
-		
+	    menu_layout = (LinearLayout) findViewById(R.id.menu_layout);
+	    menu_layout.setOnClickListener(this);
+	    findViewById(R.id.main_layout).setOnClickListener(this);
+	    findViewById(R.id.help).setOnClickListener(this);
+	    findViewById(R.id.feedback).setOnClickListener(this);
+	    findViewById(R.id.about).setOnClickListener(this);
+	    findViewById(R.id.disclaimer).setOnClickListener(this);
+	    findViewById(R.id.avs_title).setOnClickListener(this);
 	    mMyAvsHelper = new MyAvsHelper(getApplicationContext());
 	    mMyAvsHelper.setViews(cidView, pwdView, statusView, deviceName, barCodeView);
 	    mMyAvsHelper.login();
@@ -261,31 +263,6 @@ public class AvsActivity extends Activity
 	}
 	
 	@Override
-	public boolean onMenuItemClick(MenuItem item) {
-		switch (item.getItemId()) {
-			case R.id.help:
-				Intent intent = new Intent();
-				intent.setClass(getApplicationContext(), GuideActivity.class);
-				intent.putExtra(GuideActivity.START_AVS_ACTIVITY, false);
-				startActivity(intent);
-				break;
-			case R.id.feedback:
-				FeedbackAgent agent = new FeedbackAgent(this);
-				agent.startFeedbackActivity();
-				break;
-			case R.id.about:
-				showAboutDialog();
-				break;
-			case R.id.disclaimer:
-				showDisclaimerDlg();
-				break;
-			default:
-				break;
-		}
-		return false;
-	}
-	
-	@Override
 	public void onClick(View v) {
 		int id = v.getId();
 		switch (id) {
@@ -294,7 +271,37 @@ public class AvsActivity extends Activity
 			showModifyInfoDialog();
 			break;
 		case R.id.menu:
-			mMenu.show();
+			if(menu_layout.getVisibility() == View.VISIBLE){
+				menu_layout.setVisibility(View.GONE);
+			}else{
+			menu_layout.setVisibility(View.VISIBLE);
+			}
+			break;
+		case R.id.help:
+			menu_layout.setVisibility(View.GONE);
+			Intent intent = new Intent();
+			intent.setClass(getApplicationContext(), GuideActivity.class);
+			intent.putExtra(GuideActivity.START_AVS_ACTIVITY, false);
+			startActivity(intent);
+			break;
+		case R.id.feedback:
+			menu_layout.setVisibility(View.GONE);
+			FeedbackAgent agent = new FeedbackAgent(this);
+			agent.startFeedbackActivity();
+			break;
+		case R.id.about:
+			menu_layout.setVisibility(View.GONE);
+			showAboutDialog();
+			break;
+		case R.id.disclaimer:
+			menu_layout.setVisibility(View.GONE);
+			showDisclaimerDlg();
+			break;
+		case R.id.avs_title:
+		case R.id.main_layout:
+			if(menu_layout.getVisibility() == View.VISIBLE){
+				menu_layout.setVisibility(View.GONE);
+			}
 			break;
 		default:
 			break;
